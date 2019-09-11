@@ -1,4 +1,4 @@
-package com.springRest.ExceptionHandlers;
+package com.springRest.customException;
 
 public class StudentNotFoundException extends Exception{
 

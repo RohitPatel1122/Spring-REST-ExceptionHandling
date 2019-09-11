@@ -1,7 +1,7 @@
 package com.springRest.beans;
 
 public class Student {
-
+//;lj;
 	private String firstName;
 	private String lastName;
 	

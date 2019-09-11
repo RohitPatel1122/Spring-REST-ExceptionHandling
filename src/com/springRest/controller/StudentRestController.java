@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.springRest.ExceptionHandlers.StudentNotFoundException;
+import com.springRest.customException.StudentNotFoundException;
 import com.springRest.beans.Student;
 import com.springRest.beans.StudentExceptionResponse;
 
@@ -44,34 +44,5 @@ public class StudentRestController {
 		return studentsList.get(studentId);
 	}
 	
-	
-	
-	
-	
-	//********Exception Handlers******//
-	
-	//to handle studen not found exceptiom
-	@ExceptionHandler
-	public ResponseEntity<StudentExceptionResponse> handleStudentException(StudentNotFoundException exc){
-		StudentExceptionResponse response= new StudentExceptionResponse();
-		response.setStatus(HttpStatus.NOT_FOUND.value());
-		response.setMessage(exc.getMessage());
-		//response.setTimestamp(System.currentTimeMillis());	
-		
-		return new ResponseEntity<StudentExceptionResponse>(response, HttpStatus.NOT_FOUND);
-		
-	}
-	
-	//to handle exception related to bad request
-		@ExceptionHandler
-		public ResponseEntity<StudentExceptionResponse> handleAllException(Exception exc){
-			StudentExceptionResponse response= new StudentExceptionResponse();
-			response.setStatus(HttpStatus.BAD_REQUEST.value());
-			response.setMessage(exc.getMessage());
-			response.setTimestamp(System.currentTimeMillis());	
-			
-			return new ResponseEntity<StudentExceptionResponse>(response, HttpStatus.BAD_REQUEST);
-			
-		}
 	
 }
